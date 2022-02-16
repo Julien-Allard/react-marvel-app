@@ -7,7 +7,13 @@
   max-width: 1280px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.character-card-container {
+  display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -15,7 +21,7 @@
   cursor: pointer;
   width: 200px;
   height: 450px;
-  margin: 3px;
+  margin: 10px;
   background-color: #151515;
   clip-path: polygon(0% 0%, 100% 0, 100% 95%, 89% 100%, 0% 100%);
   transition: 0.5s ease-out;

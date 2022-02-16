@@ -6,17 +6,16 @@
   object-position: top;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .banner-full {
   display: flex;
   flex-direction: column;
-  position: absolute;
   align-items: center;
-  top: 25%;
-  left: 39%;
   background-color: white;
   border-radius: 12px;
   box-shadow: 0 0 5px 5px white;
@@ -31,7 +30,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 15px;
+  padding: 0 20px;
   color: #fe0002;
 }
 
