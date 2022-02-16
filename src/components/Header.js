@@ -11,7 +11,7 @@ const Header = () => {
             <img src={reactLogo} alt="" className="react-logo" />
           </div>
         </div>
-        <p>Full Marvel / Full React / Full stack</p>
+        <p>Full Marvel / Full React</p>
       </div>
     </div>
   );
