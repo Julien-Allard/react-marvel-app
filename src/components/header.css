@@ -1,0 +1,57 @@
+.header-container {
+  font-family: "Bebas Neue", cursive;
+  height: 400px;
+  max-width: 2000px;
+  background-image: url(../assets/img/marvel-header.jpg);
+  object-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.banner-full {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  align-items: center;
+  top: 25%;
+  left: 39%;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 5px 5px white;
+}
+
+.banner-full p {
+  font-size: 30px;
+  color: #fe0002;
+}
+
+.banner-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 15px;
+  color: #fe0002;
+}
+
+.banner-logo h1 {
+  font-size: 90px;
+  letter-spacing: -5px;
+}
+
+.banner-logo > div {
+  width: 75px;
+  height: 75px;
+  margin-left: 10px;
+}
+
+.banner-logo > div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.react-logo {
+  color: #fe0002;
+}
