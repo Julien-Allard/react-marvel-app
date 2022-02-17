@@ -31,9 +31,9 @@ const Characters = () => {
     <div>Chargement en cours</div>
   ) : (
     <div className="characters-body">
-      <Pagination page={page} setPage={setPage} maxPage={maxPage} />
       <div className="character-card-container">
         <h1>Characters roster</h1>
+        <Pagination page={page} setPage={setPage} maxPage={maxPage} />
         {data.results.map((element) => {
           return (
             <Link key={element._id} to={element._id}>

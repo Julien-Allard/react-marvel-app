@@ -1,0 +1,72 @@
+.comics-body {
+  font-family: "Bebas Neue", cursive;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.comics-body h1 {
+  width: 100%;
+  text-align: left;
+  font-size: 30px;
+  line-height: 40px;
+  margin: 20px 0 10px 0;
+}
+
+.comics-card-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.comics-card {
+  cursor: pointer;
+  width: 200px;
+  height: max-content;
+  margin: 10px 0 30px 0;
+  position: relative;
+}
+
+.comics-card h3 {
+  height: 40px;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.comics-card-img {
+  width: 100%;
+  height: 300px;
+  transition: 0.5s;
+}
+
+.comics-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: 0.5s;
+}
+
+.comics-card p {
+  position: absolute;
+  top: 49px;
+  left: 0;
+  opacity: 0;
+  transition: 0.5s;
+  padding: 5px 2px;
+}
+
+.comics-card:hover p {
+  opacity: 1;
+}
+
+.comics-card:hover img {
+  opacity: 0;
+}
+
+.comics-card:hover .comics-card-img {
+  box-shadow: 0 0 5px 5px #fe0002;
+}

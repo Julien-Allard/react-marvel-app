@@ -9,6 +9,7 @@ import {
   faBackwardFast,
   faForwardFast,
 } from "@fortawesome/free-solid-svg-icons";
+import Comics from "./Pages/Comics";
 library.add(faArrowLeftLong, faArrowRightLong, faBackwardFast, faForwardFast);
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Characters />} />
+        <Route path="/comics" element={<Comics />} />
       </Routes>
     </Router>
   );
