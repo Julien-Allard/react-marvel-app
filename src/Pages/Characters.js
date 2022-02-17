@@ -8,6 +8,7 @@ const Characters = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const [maxPage, setMaxPage] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,6 +17,7 @@ const Characters = () => {
           `http://localhost:3100/characters?page=${page}`
         );
         setData(response.data);
+        setMaxPage(Math.ceil(response.data.count / response.data.limit));
         // console.log(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -23,14 +25,15 @@ const Characters = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [page]);
 
   return isLoading ? (
     <div>Chargement en cours</div>
   ) : (
     <div className="characters-body">
-      <Pagination />
+      <Pagination page={page} setPage={setPage} maxPage={maxPage} />
       <div className="character-card-container">
+        <h1>Characters roster</h1>
         {data.results.map((element) => {
           return (
             <Link key={element._id} to={element._id}>

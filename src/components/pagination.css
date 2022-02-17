@@ -1,0 +1,32 @@
+.page-btn-container {
+  width: 200%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #151515;
+}
+
+.page-btn-all {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 25%;
+  height: 50px;
+  padding: 5px 20px;
+  background-color: white;
+}
+
+.page-btn {
+  cursor: pointer;
+  font-size: 22px;
+  background-color: #151515;
+  color: white;
+  width: 70px;
+  padding: 3px 10px;
+  transition: 0.3s;
+}
+
+.page-btn:hover {
+  color: #fe0002;
+}
