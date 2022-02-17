@@ -1,0 +1,26 @@
+::placeholder {
+  font-family: "Bebas Neue", cursive;
+}
+
+.searchbar-container {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 5px 5px white;
+}
+
+.searchbar-container input {
+  width: 93%;
+  height: 35px;
+  padding: 5px 20px;
+  font-size: 17px;
+  font-family: "Bebas Neue", cursive;
+  border: 2px solid black;
+}

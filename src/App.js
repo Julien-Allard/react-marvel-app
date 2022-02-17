@@ -9,10 +9,17 @@ import {
   faArrowRightLong,
   faBackwardFast,
   faForwardFast,
+  faHandBackFist,
 } from "@fortawesome/free-solid-svg-icons";
 import Comics from "./Pages/Comics";
 import Details from "./Pages/Details";
-library.add(faArrowLeftLong, faArrowRightLong, faBackwardFast, faForwardFast);
+library.add(
+  faArrowLeftLong,
+  faArrowRightLong,
+  faBackwardFast,
+  faForwardFast,
+  faHandBackFist
+);
 
 function App() {
   const [search, setSearch] = useState("");

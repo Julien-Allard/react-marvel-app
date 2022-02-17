@@ -1,16 +1,20 @@
+import "../components/searchbar.css";
+
 const Searchbar = ({ setSearch }) => {
   const searchItem = (value) => {
     setSearch(value);
   };
 
   return (
-    <input
-      type="texte"
-      placeholder="Looking for something ?"
-      onChange={(event) => {
-        searchItem(event.target.value);
-      }}
-    />
+    <div className="searchbar-container">
+      <input
+        type="search"
+        placeholder="Lookin' for somethin', bub ?"
+        onChange={(event) => {
+          searchItem(event.target.value);
+        }}
+      />
+    </div>
   );
 };
 

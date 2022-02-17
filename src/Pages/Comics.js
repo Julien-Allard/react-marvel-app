@@ -2,8 +2,9 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "../components/comics.css";
 import PaginationTwo from "../components/PaginationTwo";
+import Searchbar from "../components/Searchbar";
 
-const Comics = () => {
+const Comics = ({ search, setSearch }) => {
   const [comicsData, setComicsData] = useState();
   const [comicsPage, setComicsPage] = useState(1);
   const [comicsMaxPage, setComicsMaxPage] = useState();
@@ -13,7 +14,7 @@ const Comics = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3100/comics?page=${comicsPage}`
+          `http://localhost:3100/comics?page=${comicsPage}&title=${search}`
         );
         setComicsData(response.data);
         setComicsMaxPage(Math.ceil(response.data.count / response.data.limit));
@@ -23,13 +24,14 @@ const Comics = () => {
       }
     };
     fetchData();
-  }, [comicsPage]);
+  }, [comicsPage, search]);
 
   return comicsLoading ? (
     <div>Chargement en cours...</div>
   ) : (
     <div className="comics-body">
       <h1>Comics collection - ({comicsData.count})</h1>
+      <Searchbar search={search} setSearch={setSearch} />
       <PaginationTwo
         comicsPage={comicsPage}
         setComicsPage={setComicsPage}

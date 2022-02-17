@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../components/characters.css";
 import Pagination from "../components/Pagination";
 import Searchbar from "../components/Searchbar";
@@ -11,11 +12,15 @@ const Characters = ({ search, setSearch }) => {
   const [page, setPage] = useState(1);
   const [maxPage, setMaxPage] = useState();
 
+  const pop = () => {
+    alert("POP");
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3100/characters?page=${page}`
+          `http://localhost:3100/characters?page=${page}&title=${search}`
         );
         setData(response.data);
         setMaxPage(Math.ceil(response.data.count / response.data.limit));
@@ -26,7 +31,7 @@ const Characters = ({ search, setSearch }) => {
       }
     };
     fetchData();
-  }, [page]);
+  }, [page, search]);
 
   return isLoading ? (
     <div>Chargement en cours</div>
@@ -40,6 +45,11 @@ const Characters = ({ search, setSearch }) => {
           return (
             <Link key={element._id} to={`details/${element._id}`}>
               <div className="character-card">
+                <FontAwesomeIcon
+                  icon="fa-solid fa-hand-back-fist"
+                  className="bookmark-icon"
+                  onClick={pop}
+                />
                 <div className="character-card-img">
                   <img
                     src={`${element.thumbnail.path}.${element.thumbnail.extension}`}

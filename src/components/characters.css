@@ -41,6 +41,7 @@ body {
   background-color: #151515;
   clip-path: polygon(0% 0%, 100% 0, 100% 95%, 89% 100%, 0% 100%);
   transition: 0.5s ease-out;
+  position: relative;
 }
 
 .character-card:hover {
@@ -72,5 +73,13 @@ body {
 
 .character-card p {
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.726);
+  color: #151515;
+}
+
+.bookmark-icon {
+  font-size: 26px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: #04a7fb;
 }
