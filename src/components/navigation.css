@@ -1,0 +1,33 @@
+.navigation-container {
+  font-family: "Bebas Neue", cursive;
+  max-width: 2000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  margin-bottom: 5px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav p {
+  cursor: pointer;
+  color: white;
+  font-size: 30px;
+  margin: 0 10px;
+  padding: 15px 10px;
+  transition: 0.3s;
+}
+
+nav p:hover {
+  color: #fe0002;
+}
+
+nav span {
+  color: white;
+  font-size: 20px;
+}

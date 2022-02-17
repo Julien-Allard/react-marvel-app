@@ -2,6 +2,7 @@ import "./App.css";
 import Characters from "./Pages/Characters";
 import Header from "./components/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faArrowLeftLong,
@@ -10,15 +11,25 @@ import {
   faForwardFast,
 } from "@fortawesome/free-solid-svg-icons";
 import Comics from "./Pages/Comics";
+import Details from "./Pages/Details";
 library.add(faArrowLeftLong, faArrowRightLong, faBackwardFast, faForwardFast);
 
 function App() {
+  const [search, setSearch] = useState("");
+
   return (
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<Characters />} />
-        <Route path="/comics" element={<Comics />} />
+        <Route
+          path="/"
+          element={<Characters search={search} setSearch={setSearch} />}
+        />
+        <Route
+          path="/comics"
+          element={<Comics search={search} setSearch={setSearch} />}
+        />
+        <Route path="/details/:id" element={<Details />} />
       </Routes>
     </Router>
   );

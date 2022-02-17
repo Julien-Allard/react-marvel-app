@@ -1,40 +1,40 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../components/pagination.css";
 
-const Pagination = ({ page, setPage, maxPage }) => {
+const PaginationTwo = ({ comicsPage, setComicsPage, comicsMaxPage }) => {
   const pageDown = () => {
-    if (page > 1) {
-      setPage(page - 1);
+    if (comicsPage > 1) {
+      setComicsPage(comicsPage - 1);
     }
   };
 
   const pageDownFast = () => {
-    if (page > 5) {
-      setPage(page - 5);
+    if (comicsPage > 5) {
+      setComicsPage(comicsPage - 5);
     } else {
-      setPage(1);
+      setComicsPage(1);
     }
   };
 
   const pageUp = () => {
-    if (page < maxPage) {
-      setPage(page + 1);
+    if (comicsPage < comicsMaxPage) {
+      setComicsPage(comicsPage + 1);
     }
   };
 
   const pageUpFast = () => {
-    if (page < maxPage - 5) {
-      setPage(page + 5);
+    if (comicsPage < comicsMaxPage - 5) {
+      setComicsPage(comicsPage + 5);
     } else {
-      setPage(maxPage);
+      setComicsPage(comicsMaxPage);
     }
   };
 
   const changePage = (value) => {
-    if (value <= maxPage) {
-      setPage(value);
+    if (value <= comicsMaxPage) {
+      setComicsPage(value);
     } else {
-      setPage(maxPage);
+      setComicsPage(comicsMaxPage);
     }
   };
 
@@ -53,12 +53,12 @@ const Pagination = ({ page, setPage, maxPage }) => {
         />
         <input
           type="number"
-          placeholder={page}
+          placeholder={comicsPage}
           onChange={(event) => {
             changePage(event.target.value);
           }}
         />
-        / <p>{maxPage}</p>
+        / <p>{comicsMaxPage}</p>
         <FontAwesomeIcon
           icon="arrow-right-long"
           className="page-btn"
@@ -74,4 +74,4 @@ const Pagination = ({ page, setPage, maxPage }) => {
   );
 };
 
-export default Pagination;
+export default PaginationTwo;

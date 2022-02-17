@@ -4,7 +4,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #010101;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .page-btn-all {
@@ -15,6 +17,8 @@
   height: 50px;
   padding: 5px 20px;
   background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 5px 5px white;
 }
 
 .page-btn {
@@ -29,4 +33,22 @@
 
 .page-btn:hover {
   color: #fe0002;
+}
+
+.page-btn-all input {
+  width: 30px;
+  padding: 3px 0;
+  text-align: center;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
