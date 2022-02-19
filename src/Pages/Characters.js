@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Cookies from "js-cookie";
 import "../components/characters.css";
 import Pagination from "../components/Pagination";
 import Searchbar from "../components/Searchbar";
@@ -11,10 +12,6 @@ const Characters = ({ search, setSearch }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [maxPage, setMaxPage] = useState();
-
-  const pop = () => {
-    alert("POP");
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,11 +42,13 @@ const Characters = ({ search, setSearch }) => {
           return (
             <Link key={element._id} to={`details/${element._id}`}>
               <div className="character-card">
-                <FontAwesomeIcon
-                  icon="fa-solid fa-hand-back-fist"
-                  className="bookmark-icon"
-                  onClick={pop}
-                />
+                {Cookies.get(`fav${element._id}`) && (
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-hand-back-fist"
+                    className="bookmark-icon"
+                  />
+                )}
+
                 <div className="character-card-img">
                   <img
                     src={`${element.thumbnail.path}.${element.thumbnail.extension}`}

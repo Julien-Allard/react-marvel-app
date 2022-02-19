@@ -75,3 +75,11 @@
 .comics-card:hover .comics-card-img {
   box-shadow: 0 0 5px 5px #fe0002;
 }
+
+.comics-bookmark-icon {
+  font-size: 26px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: #04a7fb;
+}

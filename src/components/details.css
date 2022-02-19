@@ -62,3 +62,29 @@ hr {
   flex-wrap: wrap;
   margin: 20px 0;
 }
+
+.favourite-container {
+  width: 80%;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.favourite-container p {
+  font-size: 30px;
+}
+
+.addfav-bookmark-icon {
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 26px;
+  color: #04a7fb;
+}
+
+.rmvfav-bookmark-icon {
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 26px;
+  color: #e90003;
+}

@@ -3,6 +3,7 @@ import Characters from "./Pages/Characters";
 import Header from "./components/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import Cookies from "js-cookie";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faArrowLeftLong,
@@ -13,6 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Comics from "./Pages/Comics";
 import Details from "./Pages/Details";
+import Favourites from "./Pages/Favourites";
 library.add(
   faArrowLeftLong,
   faArrowRightLong,
@@ -23,6 +25,9 @@ library.add(
 
 function App() {
   const [search, setSearch] = useState("");
+  // const [favCharacters, setFavCharacters] = useState();
+  // const [allFavCharacters, setAllFavCharacters] = useState();
+  // const [favComics, setFavComics] = useState();
 
   return (
     <Router>
@@ -37,6 +42,7 @@ function App() {
           element={<Comics search={search} setSearch={setSearch} />}
         />
         <Route path="/details/:id" element={<Details />} />
+        <Route path="/favourites" element={<Favourites />} />
       </Routes>
     </Router>
   );

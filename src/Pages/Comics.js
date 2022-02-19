@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Cookies from "js-cookie";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../components/comics.css";
 import PaginationTwo from "../components/PaginationTwo";
 import Searchbar from "../components/Searchbar";
@@ -9,6 +11,17 @@ const Comics = ({ search, setSearch }) => {
   const [comicsPage, setComicsPage] = useState(1);
   const [comicsMaxPage, setComicsMaxPage] = useState();
   const [comicsLoading, setComicsLoading] = useState(true);
+  const [isFavourite, setIsFavourite] = useState();
+
+  const handleFavourites = (value) => {
+    if (!Cookies.get(`fav${value._id}`)) {
+      Cookies.set(`fav${value._id}`, value._id);
+      setIsFavourite(value._id);
+    } else {
+      Cookies.remove(`fav${value._id}`);
+      setIsFavourite();
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +37,7 @@ const Comics = ({ search, setSearch }) => {
       }
     };
     fetchData();
-  }, [comicsPage, search]);
+  }, [comicsPage, search, isFavourite]);
 
   return comicsLoading ? (
     <div>Chargement en cours...</div>
@@ -40,7 +53,13 @@ const Comics = ({ search, setSearch }) => {
       <div className="comics-card-container">
         {comicsData.results.map((comics) => {
           return (
-            <div className="comics-card" key={comics._id}>
+            <div
+              className="comics-card"
+              key={comics._id}
+              onClick={() => {
+                handleFavourites(comics);
+              }}
+            >
               <h3>{comics.title}</h3>
               <div className="comics-card-img">
                 <img
@@ -52,6 +71,12 @@ const Comics = ({ search, setSearch }) => {
                 <p>{comics.description}</p>
               ) : (
                 <p>Description not available</p>
+              )}
+              {Cookies.get(`fav${comics._id}`) && (
+                <FontAwesomeIcon
+                  icon="fa-solid fa-hand-back-fist"
+                  className="comics-bookmark-icon"
+                />
               )}
             </div>
           );
