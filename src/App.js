@@ -15,6 +15,8 @@ import {
 import Comics from "./Pages/Comics";
 import Details from "./Pages/Details";
 import Favourites from "./Pages/Favourites";
+import FavouriteComics from "./Pages/FavouriteComics";
+import Page404 from "./Pages/Page404";
 library.add(
   faArrowLeftLong,
   faArrowRightLong,
@@ -42,7 +44,9 @@ function App() {
           element={<Comics search={search} setSearch={setSearch} />}
         />
         <Route path="/details/:id" element={<Details />} />
-        <Route path="/favourites" element={<Favourites />} />
+        <Route path="/favourites/characters" element={<Favourites />} />
+        <Route path="favourites/comics" element={<FavouriteComics />} />
+        <Route path="*" element={<Page404 />} />
       </Routes>
     </Router>
   );

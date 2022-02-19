@@ -24,13 +24,14 @@ body {
   text-align: left;
   font-size: 40px;
   font-weight: 600;
-  margin: 20px 0 10px 10px;
+  margin: 20px 0 30px 10px;
 }
 
 .character-card-container {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .character-card {

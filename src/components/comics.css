@@ -16,7 +16,7 @@
   text-align: left;
   font-size: 40px;
   font-weight: 600;
-  margin: 20px 0 10px 10px;
+  margin: 20px 0 30px 10px;
 }
 
 .comics-card-container {
@@ -24,6 +24,7 @@
   justify-content: space-around;
   flex-wrap: wrap;
   margin-top: 10px;
+  width: 100%;
 }
 
 .comics-card {
@@ -82,4 +83,14 @@
   bottom: 10px;
   left: 10px;
   color: #04a7fb;
+}
+
+/* Page not found */
+.text-404 {
+  font-size: 30px;
+  padding: 50px 0;
+}
+
+.text-404 span {
+  font-weight: bolder;
 }

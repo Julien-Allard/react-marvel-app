@@ -13,8 +13,12 @@ const Navigation = () => {
           <p>Comics</p>
         </Link>
         <span>|</span>
-        <Link to="/favourites">
-          <p>Favourites</p>
+        <Link to="/favourites/characters">
+          <p>Favourite characters</p>
+        </Link>
+        <span>|</span>
+        <Link to="/favourites/comics">
+          <p>Favourite comics</p>
         </Link>
       </nav>
     </div>
