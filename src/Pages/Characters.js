@@ -16,7 +16,7 @@ const Characters = ({ search, setSearch }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3100/characters?page=${page}&title=${search}`
+          `https://marveact-api.herokuapp.com/characters?page=${page}&title=${search}`
         );
         setData(response.data);
         setMaxPage(Math.ceil(response.data.count / response.data.limit));

@@ -19,7 +19,9 @@ const FavouriteComics = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`http://localhost:3100/comics`);
+      const response = await axios.get(
+        `https://marveact-api.herokuapp.com/comics`
+      );
       setComicsData(response.data);
       setComicsLoading(false);
     };

@@ -23,7 +23,9 @@ const Details = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3100/comics/${id}`);
+        const response = await axios.get(
+          `https://marveact-api.herokuapp.com/comics/${id}`
+        );
         setData(response.data);
         // console.log(response.data);
         setIsFavourite(localStorage.getItem(`fav${response.data._id}`));

@@ -21,7 +21,7 @@ const Favourites = () => {
       //itération pour récupérer uniquement les personnages dont l'ID est stocké en localStorage
       for (let i = 0; i < favKeys.length; i++) {
         const response = await axios.get(
-          `http://localhost:3100/character/${favKeys[i]}`
+          `https://marveact-api.herokuapp.com/character/${favKeys[i]}`
         );
         if (response.data !== null) {
           tempData.push(response.data);

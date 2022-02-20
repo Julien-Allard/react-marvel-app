@@ -26,7 +26,7 @@ const Comics = ({ search, setSearch }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3100/comics?page=${comicsPage}&title=${search}`
+          `https://marveact-api.herokuapp.com/comics?page=${comicsPage}&title=${search}`
         );
         setComicsData(response.data);
         setComicsMaxPage(Math.ceil(response.data.count / response.data.limit));
