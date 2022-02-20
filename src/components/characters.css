@@ -27,6 +27,11 @@ body {
   margin: 20px 0 30px 10px;
 }
 
+.characters-intro {
+  margin: 10px 0 30px 10px;
+  font-size: 20px;
+}
+
 .character-card-container {
   display: flex;
   justify-content: space-around;

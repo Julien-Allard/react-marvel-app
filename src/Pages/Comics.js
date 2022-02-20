@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import Cookies from "js-cookie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../components/comics.css";
 import PaginationTwo from "../components/PaginationTwo";
@@ -14,11 +13,11 @@ const Comics = ({ search, setSearch }) => {
   const [isFavourite, setIsFavourite] = useState();
 
   const handleFavourites = (value) => {
-    if (!Cookies.get(`fav${value._id}`)) {
-      Cookies.set(`fav${value._id}`, value._id);
+    if (!localStorage.getItem(`fav${value._id}`)) {
+      localStorage.setItem(`fav${value._id}`, value._id);
       setIsFavourite(value._id);
     } else {
-      Cookies.remove(`fav${value._id}`);
+      localStorage.removeItem(`fav${value._id}`);
       setIsFavourite();
     }
   };
@@ -40,10 +39,19 @@ const Comics = ({ search, setSearch }) => {
   }, [comicsPage, search, isFavourite]);
 
   return comicsLoading ? (
-    <div>Chargement en cours...</div>
+    <div className="comics-body">
+      <div className="comics-card-container">
+        <p>Chargement en cours...</p>
+      </div>
+    </div>
   ) : (
     <div className="comics-body">
-      <h1>Comics collection - ({comicsData.count})</h1>
+      <h1>Comics collection</h1>
+      <p className="comics-intro">
+        Here's the fun part. You like heroes ? And you like to read ? Just take
+        a look at the {comicsData.count} references and see what's going on !
+        Feel free to click on any of them to add it as favourite.
+      </p>
       <Searchbar search={search} setSearch={setSearch} />
       <PaginationTwo
         comicsPage={comicsPage}
@@ -72,7 +80,7 @@ const Comics = ({ search, setSearch }) => {
               ) : (
                 <p>Description not available</p>
               )}
-              {Cookies.get(`fav${comics._id}`) && (
+              {localStorage.getItem(`fav${comics._id}`) && (
                 <FontAwesomeIcon
                   icon="fa-solid fa-hand-back-fist"
                   className="comics-bookmark-icon"

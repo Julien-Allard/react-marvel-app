@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Cookies from "js-cookie";
 import axios from "axios";
 import "../components/details.css";
 
@@ -13,10 +12,10 @@ const Details = () => {
 
   const handleFavourites = () => {
     if (!isFavourite) {
-      Cookies.set(`fav${data._id}`, data._id);
+      localStorage.setItem(`fav${data._id}`, data._id);
       setIsFavourite(data._id);
     } else {
-      Cookies.remove(`fav${data._id}`);
+      localStorage.removeItem(`fav${data._id}`);
       setIsFavourite();
     }
   };
@@ -27,7 +26,7 @@ const Details = () => {
         const response = await axios.get(`http://localhost:3100/comics/${id}`);
         setData(response.data);
         // console.log(response.data);
-        setIsFavourite(Cookies.get(`fav${response.data._id}`));
+        setIsFavourite(localStorage.getItem(`fav${response.data._id}`));
         setIsLoading(false);
       } catch (error) {
         console.log(error.response);

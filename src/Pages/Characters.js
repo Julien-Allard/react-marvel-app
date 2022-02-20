@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Cookies from "js-cookie";
 import "../components/characters.css";
 import Pagination from "../components/Pagination";
 import Searchbar from "../components/Searchbar";
@@ -31,18 +30,29 @@ const Characters = ({ search, setSearch }) => {
   }, [page, search]);
 
   return isLoading ? (
-    <div>Chargement en cours</div>
+    <div className="characters-body">
+      <div className="character-card-container">
+        <h1>Characters roster</h1>
+        <p>Chargement en cours</p>
+      </div>
+    </div>
   ) : (
     <div className="characters-body">
       <div className="character-card-container">
-        <h1>Characters roster - ({data.count})</h1>
+        <h1>Characters roster</h1>
+        <p className="characters-intro">
+          Take a look at the awesome roster of Marvel characters ! There are no
+          less than {data.count} heroes and vilains. Feel free to click on any
+          of them to have more details about them, see the comics they are
+          featured in and even add them to your favourites !
+        </p>
         <Searchbar search={search} setSearch={setSearch} />
         <Pagination page={page} setPage={setPage} maxPage={maxPage} />
         {data.results.map((element) => {
           return (
             <Link key={element._id} to={`details/${element._id}`}>
               <div className="character-card">
-                {Cookies.get(`fav${element._id}`) && (
+                {localStorage.getItem(`fav${element._id}`) && (
                   <FontAwesomeIcon
                     icon="fa-solid fa-hand-back-fist"
                     className="bookmark-icon"

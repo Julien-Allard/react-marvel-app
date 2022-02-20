@@ -19,6 +19,13 @@
   margin: 20px 0 30px 10px;
 }
 
+.comics-intro {
+  margin: 10px 0 30px 10px;
+  font-size: 20px;
+  text-align: left;
+  width: 100%;
+}
+
 .comics-card-container {
   display: flex;
   justify-content: space-around;
@@ -86,11 +93,39 @@
 }
 
 /* Page not found */
+.body-404 {
+  font-family: "Bebas Neue", cursive;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 5px 5px white;
+}
+
 .text-404 {
   font-size: 30px;
   padding: 50px 0;
 }
 
-.text-404 span {
+.body-404 span {
   font-weight: bolder;
+}
+
+.img-404 {
+  width: 400px;
+}
+
+.img-404 img {
+  width: 100%;
+  object-fit: cover;
+  box-shadow: 0 10px 14px 4px rgba(0, 0, 0, 0.431);
+}
+
+.body-404 p {
+  width: 50%;
+  text-align: center;
 }

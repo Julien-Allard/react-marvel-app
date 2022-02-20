@@ -2,34 +2,63 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
-import Cookies from "js-cookie";
 
 const Favourites = () => {
-  const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+
+  //gestion des favoris
+  const [favCharas, setFavCharas] = useState();
+  const tempData = [];
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:3100/characters");
-      setData(response.data);
+      //récupération de tous les ID mis en localStorage
+      const favKeys = [];
+      Object.keys(localStorage).forEach((key) => {
+        favKeys.push(localStorage.getItem(key));
+      });
+      // console.log(favKeys);
+      //itération pour récupérer uniquement les personnages dont l'ID est stocké en localStorage
+      for (let i = 0; i < favKeys.length; i++) {
+        const response = await axios.get(
+          `http://localhost:3100/character/${favKeys[i]}`
+        );
+        if (response.data !== null) {
+          tempData.push(response.data);
+        }
+      }
+      setFavCharas(tempData);
       setIsLoading(false);
     };
     fetchData();
-    console.log(data);
-  }, []);
+  }, [tempData]);
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await axios.get("http://localhost:3100/characters");
+  //     setData(response.data);
+  //     setIsLoading(false);
+  //   };
+  //   fetchData();
+  // }, []);
 
   return isLoading ? (
-    <p>Chargement en cours</p>
+    <div className="characters-body">
+      <div className="character-card-container">
+        <p>Chargement en cours</p>
+      </div>
+    </div>
   ) : (
     <div className="characters-body">
       <div className="character-card-container">
-        <h1>Favourite characters</h1>
-        {data.results.map((character) => {
+        <h1>Favourite characters (your new best friends)</h1>
+        {favCharas.map((character) => {
           return (
-            Cookies.get(`fav${character._id}`) && (
+            localStorage.getItem(`fav${character._id}`) && (
               <Link key={character._id} to={`/details/${character._id}`}>
                 <div className="character-card">
-                  {Cookies.get(`fav${character._id}`) && (
+                  {localStorage.getItem(`fav${character._id}`) && (
                     <FontAwesomeIcon
                       icon="fa-solid fa-hand-back-fist"
                       className="bookmark-icon"

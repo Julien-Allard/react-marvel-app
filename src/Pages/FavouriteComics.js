@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
-import Cookies from "js-cookie";
 
 const FavouriteComics = () => {
   const [comicsData, setComicsData] = useState();
@@ -10,18 +8,18 @@ const FavouriteComics = () => {
   const [isFavourite, setIsFavourite] = useState();
 
   const handleFavourites = (value) => {
-    if (!Cookies.get(`fav${value._id}`)) {
-      Cookies.set(`fav${value._id}`, value._id);
+    if (!localStorage.getItem(`fav${value._id}`)) {
+      localStorage.setItem(`fav${value._id}`, value._id);
       setIsFavourite(value._id);
     } else {
-      Cookies.remove(`fav${value._id}`);
+      localStorage.removeItem(`fav${value._id}`);
       setIsFavourite();
     }
   };
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:3100/comics");
+      const response = await axios.get(`http://localhost:3100/comics`);
       setComicsData(response.data);
       setComicsLoading(false);
     };
@@ -36,7 +34,7 @@ const FavouriteComics = () => {
       <div className="comics-card-container">
         {comicsData.results.map((comics) => {
           return (
-            Cookies.get(`fav${comics._id}`) && (
+            localStorage.getItem(`fav${comics._id}`) && (
               <div
                 className="comics-card"
                 key={comics._id}
@@ -56,7 +54,7 @@ const FavouriteComics = () => {
                 ) : (
                   <p>Description not available</p>
                 )}
-                {Cookies.get(`fav${comics._id}`) && (
+                {localStorage.getItem(`fav${comics._id}`) && (
                   <FontAwesomeIcon
                     icon="fa-solid fa-hand-back-fist"
                     className="comics-bookmark-icon"
