@@ -11,10 +11,44 @@ const Details = () => {
   const [isFavourite, setIsFavourite] = useState();
 
   const handleFavourites = () => {
+    let favContainer;
+    const newFav = {
+      thumbnail: {
+        path: data.thumbnail.path,
+        extension: data.thumbnail.extension,
+      },
+      _id: data._id,
+      name: data.name,
+      description: data.description,
+    };
+
     if (!isFavourite) {
+      if (localStorage.getItem("favchars")) {
+        const importFavs = localStorage.getItem("favchars");
+        favContainer = JSON.parse(importFavs);
+        favContainer.push(newFav);
+      } else {
+        favContainer = [];
+        favContainer.push(newFav);
+      }
+      const addNewFav = JSON.stringify(favContainer);
+      localStorage.setItem("favchars", addNewFav);
+      //////////////////////////////////////////////////
       localStorage.setItem(`fav${data._id}`, data._id);
       setIsFavourite(data._id);
     } else {
+      if (localStorage.getItem("favchars")) {
+        const importFavs = localStorage.getItem("favchars");
+        favContainer = JSON.parse(importFavs);
+        for (let i = 0; i < favContainer.length; i++) {
+          if (favContainer[i]._id === id) {
+            favContainer.splice(favContainer.indexOf(favContainer[i]), 1);
+          }
+        }
+        const addNewFav = JSON.stringify(favContainer);
+        localStorage.setItem("favchars", addNewFav);
+      }
+      //////////////////////////////////////////////////
       localStorage.removeItem(`fav${data._id}`);
       setIsFavourite();
     }
