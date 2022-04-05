@@ -26,7 +26,7 @@ const Favourites = () => {
         <p>Waiting for favourites...</p>
       </div>
     </div>
-  ) : favCharas.length > 0 ? (
+  ) : favCharas && favCharas.length > 0 ? (
     <div className="characters-body">
       <div className="character-card-container">
         <h1>Favourite characters (your new best friends)</h1>
