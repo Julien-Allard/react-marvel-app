@@ -33,16 +33,6 @@ const Favourites = () => {
     fetchData();
   }, [tempData]);
 
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const response = await axios.get("http://localhost:3100/characters");
-  //     setData(response.data);
-  //     setIsLoading(false);
-  //   };
-  //   fetchData();
-  // }, []);
-
   return isLoading ? (
     <div className="characters-body">
       <div className="character-card-container">
