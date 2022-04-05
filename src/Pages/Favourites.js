@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import DeadpoolFace from "../assets/img/deadpool-portrait.jpeg";
 
 const Favourites = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,10 +23,10 @@ const Favourites = () => {
   return isLoading ? (
     <div className="characters-body">
       <div className="character-card-container">
-        <p>En attente de favoris...</p>
+        <p>Waiting for favourites...</p>
       </div>
     </div>
-  ) : (
+  ) : favCharas.length > 0 ? (
     <div className="characters-body">
       <div className="character-card-container">
         <h1>Favourite characters (your new best friends)</h1>
@@ -52,6 +53,21 @@ const Favourites = () => {
             </Link>
           );
         })}
+      </div>
+    </div>
+  ) : (
+    <div className="characters-body">
+      <div className="character-card-container">
+        <div className="no-favourites">
+          <img src={DeadpoolFace} alt="" />
+          <p>
+            Ow... Got no friends ? Let's meet new ones ! The Hulk is always up
+            for some MEAN GREEN tea.
+          </p>
+          <Link to="/" className="lets-go">
+            <p>Let's go !</p>
+          </Link>
+        </div>
       </div>
     </div>
   );

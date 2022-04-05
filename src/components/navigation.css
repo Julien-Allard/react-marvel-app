@@ -23,9 +23,16 @@ nav p {
   padding: 15px 10px;
   transition: 0.3s;
 }
-
+nav p.inactive {
+  cursor: none;
+  opacity: 0.5;
+}
 nav p:hover {
   color: #fe0002;
+}
+nav p.inactive:hover {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 nav span {
