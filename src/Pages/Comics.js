@@ -13,14 +13,53 @@ const Comics = ({ search, setSearch }) => {
   const [isFavourite, setIsFavourite] = useState();
 
   const handleFavourites = (value) => {
-    if (!localStorage.getItem(`fav${value._id}`)) {
-      localStorage.setItem(`fav${value._id}`, value._id);
-      setIsFavourite(value._id);
+    let favContainer;
+    const favObject = {
+      thumbnail: {
+        path: value.thumbnail.path,
+        extension: value.thumbnail.extension,
+      },
+      _id: value._id,
+      title: value.title,
+      description: value.description,
+    };
+
+    if (localStorage.getItem("favcomics")) {
+      const importFavs = localStorage.getItem("favcomics");
+      favContainer = JSON.parse(importFavs);
+      const filter = favContainer.filter((elem) => elem._id === value._id);
+      // console.log(filter);
+
+      if (filter.length > 0) {
+        for (let i = 0; i < favContainer.length; i++) {
+          if (favContainer[i]._id === value._id) {
+            favContainer.splice(favContainer.indexOf(favContainer[i]), 1);
+            const exportFavs = JSON.stringify(favContainer);
+            localStorage.setItem("favcomics", exportFavs);
+          }
+        }
+      } else {
+        favContainer.push(favObject);
+        const exportFavs = JSON.stringify(favContainer);
+        localStorage.setItem("favcomics", exportFavs);
+      }
     } else {
-      localStorage.removeItem(`fav${value._id}`);
-      setIsFavourite();
+      favContainer = [];
+      favContainer.push(favObject);
+      const exportFavs = JSON.stringify(favContainer);
+      localStorage.setItem("favcomics", exportFavs);
     }
   };
+
+  // const handleFavourites = (value) => {
+  //   if (!localStorage.getItem(`fav${value._id}`)) {
+  //     localStorage.setItem(`fav${value._id}`, value._id);
+  //     setIsFavourite(value._id);
+  //   } else {
+  //     localStorage.removeItem(`fav${value._id}`);
+  //     setIsFavourite();
+  //   }
+  // };
 
   useEffect(() => {
     const fetchData = async () => {
