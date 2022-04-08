@@ -9,7 +9,7 @@ I used all my current knowledge to bring the best Marvel experience I could.
 
 - consult a Marvel database to get all kind of different Marvel heroes and vilains
 - same thing to get a huge panel of Marvel comics
-- add characters and comics to your favourites ! They are safely keeped on your cookies
+- add characters and comics to your favourites ! They are safely keeped on your local storage
 - more to come (better favourite system and account creation/management)
 - I took inspiration from different Marvel ressources
 
