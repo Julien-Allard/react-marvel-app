@@ -10,7 +10,7 @@ const Comics = ({ search, setSearch }) => {
   const [comicsPage, setComicsPage] = useState(1);
   const [comicsMaxPage, setComicsMaxPage] = useState();
   const [comicsLoading, setComicsLoading] = useState(true);
-  const [isFavourite, setIsFavourite] = useState();
+  const [isFavourite, setIsFavourite] = useState(false);
 
   const handleFavourites = (value) => {
     let favContainer;
@@ -49,6 +49,7 @@ const Comics = ({ search, setSearch }) => {
       const exportFavs = JSON.stringify(favContainer);
       localStorage.setItem("favcomics", exportFavs);
     }
+    setIsFavourite(!isFavourite);
   };
 
   // const handleFavourites = (value) => {
@@ -70,12 +71,13 @@ const Comics = ({ search, setSearch }) => {
         setComicsData(response.data);
         setComicsMaxPage(Math.ceil(response.data.count / response.data.limit));
         setComicsLoading(false);
+        console.log(localStorage.getItem("favcomics"));
       } catch (error) {
         console.log(error.response);
       }
     };
     fetchData();
-  }, [comicsPage, search, isFavourite]);
+  }, [comicsPage, search]);
 
   return comicsLoading ? (
     <div className="comics-body">
@@ -119,7 +121,7 @@ const Comics = ({ search, setSearch }) => {
               ) : (
                 <p>Description not available</p>
               )}
-              {localStorage.getItem(`fav${comics._id}`) && (
+              {localStorage.getItem("favcomics").includes(comics._id) && (
                 <FontAwesomeIcon
                   icon="fa-solid fa-hand-back-fist"
                   className="comics-bookmark-icon"
