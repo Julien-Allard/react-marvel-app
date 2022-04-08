@@ -19,6 +19,20 @@
   margin: 20px 0 30px 10px;
 }
 
+.comics-body .no-favs {
+  display: flex;
+  align-items: center;
+  padding-bottom: 30px;
+}
+.comics-body .no-favs img {
+  width: 150px;
+  box-shadow: 0 10px 14px 1px rgba(0, 0, 0, 0.431);
+  margin-right: 20px;
+}
+.comics-body .no-favs p {
+  font-size: 22px;
+}
+
 .comics-intro {
   margin: 10px 0 30px 10px;
   font-size: 20px;

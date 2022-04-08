@@ -58,6 +58,7 @@ const Favourites = () => {
   ) : (
     <div className="characters-body">
       <div className="character-card-container">
+        <h1>Favourite characters (your new best friends)</h1>
         <div className="no-favourites">
           <img src={DeadpoolFace} alt="" />
           <p>

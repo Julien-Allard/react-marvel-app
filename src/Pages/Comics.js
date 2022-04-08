@@ -52,16 +52,6 @@ const Comics = ({ search, setSearch }) => {
     setIsFavourite(!isFavourite);
   };
 
-  // const handleFavourites = (value) => {
-  //   if (!localStorage.getItem(`fav${value._id}`)) {
-  //     localStorage.setItem(`fav${value._id}`, value._id);
-  //     setIsFavourite(value._id);
-  //   } else {
-  //     localStorage.removeItem(`fav${value._id}`);
-  //     setIsFavourite();
-  //   }
-  // };
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -71,7 +61,6 @@ const Comics = ({ search, setSearch }) => {
         setComicsData(response.data);
         setComicsMaxPage(Math.ceil(response.data.count / response.data.limit));
         setComicsLoading(false);
-        console.log(localStorage.getItem("favcomics"));
       } catch (error) {
         console.log(error.response);
       }
