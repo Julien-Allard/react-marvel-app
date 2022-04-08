@@ -110,12 +110,13 @@ const Comics = ({ search, setSearch }) => {
               ) : (
                 <p>Description not available</p>
               )}
-              {localStorage.getItem("favcomics").includes(comics._id) && (
-                <FontAwesomeIcon
-                  icon="fa-solid fa-hand-back-fist"
-                  className="comics-bookmark-icon"
-                />
-              )}
+              {localStorage.getItem("favcomics") &&
+                localStorage.getItem("favcomics").includes(comics._id) && (
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-hand-back-fist"
+                    className="comics-bookmark-icon"
+                  />
+                )}
             </div>
           );
         })}
