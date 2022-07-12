@@ -1,31 +1,31 @@
-import "./App.css";
-import Characters from "./Pages/Characters";
-import Header from "./components/Header";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from "react";
-import { library } from "@fortawesome/fontawesome-svg-core";
+import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faArrowLeftLong,
   faArrowRightLong,
   faBackwardFast,
   faForwardFast,
   faHandBackFist,
-} from "@fortawesome/free-solid-svg-icons";
-import Comics from "./Pages/Comics";
-import Details from "./Pages/Details";
-import Favourites from "./Pages/Favourites";
-import FavouriteComics from "./Pages/FavouriteComics";
-import Page404 from "./Pages/Page404";
+} from '@fortawesome/free-solid-svg-icons';
+import Characters from './Pages/Characters';
+import Header from './components/Header';
+import Comics from './Pages/Comics';
+import Details from './Pages/Details';
+import Favourites from './Pages/Favourites';
+import FavouriteComics from './Pages/FavouriteComics';
+import Page404 from './Pages/Page404';
 library.add(
   faArrowLeftLong,
   faArrowRightLong,
   faBackwardFast,
   faForwardFast,
-  faHandBackFist
+  faHandBackFist,
 );
 
 function App() {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState<string>('');
 
   return (
     <Router>
