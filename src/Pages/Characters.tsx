@@ -76,7 +76,7 @@ const Characters: FC<CharactersProps> = ({ search, setSearch }) => {
           of them to have more details about them, see the comics they are
           featured in and even add them to your favourites !
         </p>
-        <Searchbar setSearch={setSearch} />
+        <Searchbar search={search} setSearch={setSearch} />
         <Pagination page={page} setPage={setPage} maxPage={maxPage} />
         {data?.results.map((element: ResultElement) => {
           return (

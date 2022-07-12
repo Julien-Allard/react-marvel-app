@@ -7,6 +7,7 @@ I used all my current knowledge to bring the best Marvel experience I could.
 
 ## Features :
 
+- TypeScript
 - consult a Marvel database to get all kind of different Marvel heroes and vilains
 - same thing to get a huge panel of Marvel comics
 - add characters and comics to your favourites ! They are safely keeped on your local storage

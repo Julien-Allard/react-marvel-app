@@ -2,10 +2,11 @@ import React, { ChangeEvent, Dispatch, SetStateAction, FC } from 'react';
 import '../components/searchbar.css';
 
 interface SearchBarProps {
+  search: string;
   setSearch: Dispatch<SetStateAction<string>>;
 }
 
-const Searchbar: FC<SearchBarProps> = ({ setSearch }) => {
+const Searchbar: FC<SearchBarProps> = ({ search, setSearch }) => {
   const searchItem = (event: ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
   };
@@ -16,6 +17,7 @@ const Searchbar: FC<SearchBarProps> = ({ setSearch }) => {
         type="search"
         placeholder="Lookin' for somethin', bub ?"
         onChange={searchItem}
+        value={search}
       />
     </div>
   );
