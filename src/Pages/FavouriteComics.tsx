@@ -1,16 +1,29 @@
-import { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import LoganReading from "../assets/img/logan-reading.jpg";
+import { useState, useEffect, FC } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHandBackFist } from '@fortawesome/free-solid-svg-icons';
+import LoganReading from '../assets/img/logan-reading.jpg';
 
-const FavouriteComics = () => {
-  const [comicsData, setComicsData] = useState();
+type Thumbnail = {
+  path: string;
+  extension: string;
+};
+
+type ReceivedComicsData = {
+  _id: number;
+  title: string;
+  description: string;
+  thumbnail: Thumbnail;
+};
+
+const FavouriteComics: FC = () => {
+  const [comicsData, setComicsData] = useState<ReceivedComicsData[] | []>([]);
   const [comicsLoading, setComicsLoading] = useState(true);
 
-  const handleFavourites = (value) => {
-    const importFavs = localStorage.getItem("favcomics");
+  const handleFavourites = (value: ReceivedComicsData) => {
+    const importFavs = localStorage.getItem('favcomics') || '';
     const importedFavs = JSON.parse(importFavs);
 
-    const newTab = [...comicsData];
+    const newTab: ReceivedComicsData[] = [...comicsData];
     for (let i = 0; i < newTab.length; i++) {
       if (value._id === newTab[i]._id) {
         newTab.splice(newTab.indexOf(newTab[i]), 1);
@@ -24,11 +37,11 @@ const FavouriteComics = () => {
       }
     }
     const exportedFavs = JSON.stringify(importedFavs);
-    localStorage.setItem("favcomics", exportedFavs);
+    localStorage.setItem('favcomics', exportedFavs);
   };
 
   useEffect(() => {
-    const importFavs = localStorage.getItem("favcomics");
+    const importFavs = localStorage.getItem('favcomics') || '';
     const importedFavs = JSON.parse(importFavs);
     setComicsData(importedFavs);
     setComicsLoading(false);
@@ -70,7 +83,7 @@ const FavouriteComics = () => {
                 <p>Description not available</p>
               )}
               <FontAwesomeIcon
-                icon="fa-solid fa-hand-back-fist"
+                icon={faHandBackFist}
                 className="comics-bookmark-icon"
               />
             </div>
