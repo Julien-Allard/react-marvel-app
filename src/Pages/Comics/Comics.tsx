@@ -2,9 +2,9 @@ import axios from 'axios';
 import { useState, useEffect, Dispatch, SetStateAction, FC } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHandBackFist } from '@fortawesome/free-solid-svg-icons';
-import '../components/comics.css';
-import PaginationTwo from '../components/PaginationTwo';
-import Searchbar from '../components/Searchbar';
+import './comics.css';
+import PaginationTwo from '../../components/Pagination/PaginationTwo';
+import Searchbar from '../../components/SearchBar/Searchbar';
 
 interface ComicsProps {
   search: string;

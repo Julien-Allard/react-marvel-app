@@ -1,5 +1,5 @@
 import React, { ChangeEvent, Dispatch, SetStateAction, FC } from 'react';
-import '../components/searchbar.css';
+import './searchbar.css';
 
 interface SearchBarProps {
   search: string;

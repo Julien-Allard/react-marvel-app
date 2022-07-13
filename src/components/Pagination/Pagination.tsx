@@ -4,52 +4,48 @@ import {
   faBackwardFast,
   faForwardFast,
 } from '@fortawesome/free-solid-svg-icons';
-import '../components/pagination.css';
+import './pagination.css';
 
-interface PaginationTwoProps {
-  comicsPage: number;
-  setComicsPage: Dispatch<SetStateAction<number>>;
-  comicsMaxPage: number;
+interface PaginationProps {
+  page: number;
+  setPage: Dispatch<SetStateAction<number>>;
+  maxPage: number;
 }
 
-const PaginationTwo: FC<PaginationTwoProps> = ({
-  comicsPage,
-  setComicsPage,
-  comicsMaxPage,
-}) => {
+const Pagination: FC<PaginationProps> = ({ page, setPage, maxPage }) => {
   const pageDown = () => {
-    if (comicsPage > 1) {
-      setComicsPage(comicsPage - 1);
+    if (page > 1) {
+      setPage(page - 1);
     }
   };
 
   const pageDownFast = () => {
-    if (comicsPage > 5) {
-      setComicsPage(comicsPage - 5);
+    if (page > 5) {
+      setPage(page - 5);
     } else {
-      setComicsPage(1);
+      setPage(1);
     }
   };
 
   const pageUp = () => {
-    if (comicsPage < comicsMaxPage) {
-      setComicsPage(comicsPage + 1);
+    if (page < maxPage) {
+      setPage(page + 1);
     }
   };
 
   const pageUpFast = () => {
-    if (comicsPage < comicsMaxPage - 5) {
-      setComicsPage(comicsPage + 5);
+    if (page < maxPage - 5) {
+      setPage(page + 5);
     } else {
-      setComicsPage(comicsMaxPage);
+      setPage(maxPage);
     }
   };
 
   const changePage = (event: ChangeEvent<HTMLInputElement>) => {
-    if (Number(event) <= comicsMaxPage) {
-      setComicsPage(Number(event.target.value));
+    if (Number(event) <= maxPage) {
+      setPage(Number(event.target.value));
     } else {
-      setComicsPage(comicsMaxPage);
+      setPage(maxPage);
     }
   };
 
@@ -68,10 +64,10 @@ const PaginationTwo: FC<PaginationTwoProps> = ({
         />
         <input
           type="number"
-          placeholder={comicsPage.toString()}
+          placeholder={page.toString()}
           onChange={changePage}
         />
-        / <p>{comicsMaxPage}</p>
+        / <p>{maxPage}</p>
         <FontAwesomeIcon
           icon="arrow-right-long"
           className="page-btn"
@@ -87,4 +83,4 @@ const PaginationTwo: FC<PaginationTwoProps> = ({
   );
 };
 
-export default PaginationTwo;
+export default Pagination;

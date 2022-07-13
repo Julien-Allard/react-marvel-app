@@ -9,10 +9,10 @@ import {
   faForwardFast,
   faHandBackFist,
 } from '@fortawesome/free-solid-svg-icons';
-import Characters from './Pages/Characters';
-import Header from './components/Header';
-import Comics from './Pages/Comics';
-import Details from './Pages/Details';
+import Characters from './Pages/Characters/Characters';
+import Header from './components/Header/Header';
+import Comics from './Pages/Comics/Comics';
+import Details from './Pages/Details/Details';
 import Favourites from './Pages/Favourites';
 import FavouriteComics from './Pages/FavouriteComics';
 import Page404 from './Pages/Page404';

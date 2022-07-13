@@ -3,7 +3,7 @@ import { useState, useEffect, FC } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHandBackFist } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-import '../components/details.css';
+import './details.css';
 
 type Thumbnail = {
   path: string;

@@ -9,9 +9,9 @@ import React, {
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHandBackFist } from '@fortawesome/free-solid-svg-icons';
-import '../components/characters.css';
-import Pagination from '../components/Pagination';
-import Searchbar from '../components/Searchbar';
+import './characters.css';
+import Pagination from '../../components/Pagination/Pagination';
+import Searchbar from '../../components/SearchBar/Searchbar';
 
 export interface CharactersProps {
   search: string;

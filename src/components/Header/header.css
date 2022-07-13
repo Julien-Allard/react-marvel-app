@@ -1,8 +1,8 @@
 .header-container {
-  font-family: "Bebas Neue", cursive;
+  font-family: 'Bebas Neue', cursive;
   height: 400px;
   max-width: 2000px;
-  background-image: url(../assets/img/marvel-header.jpg);
+  background-image: url(../../assets/img/marvel-header.jpg);
   object-position: top;
   background-repeat: no-repeat;
   background-size: cover;
