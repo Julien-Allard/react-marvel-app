@@ -1,6 +1,7 @@
-import StopImage from "../assets/img/deadpool-404.jpg";
+import { FC } from 'react';
+import StopImage from '../assets/img/deadpool-404.jpg';
 
-const Page404 = () => {
+const Page404: FC = () => {
   return (
     <div className="body-404">
       <p className="text-404">
@@ -23,4 +24,5 @@ const Page404 = () => {
     </div>
   );
 };
+
 export default Page404;
