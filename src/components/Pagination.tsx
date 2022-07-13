@@ -43,7 +43,7 @@ const Pagination: FC<PaginationProps> = ({ page, setPage, maxPage }) => {
 
   const changePage = (event: ChangeEvent<HTMLInputElement>) => {
     if (Number(event) <= maxPage) {
-      setPage(Number(event));
+      setPage(Number(event.target.value));
     } else {
       setPage(maxPage);
     }

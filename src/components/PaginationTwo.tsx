@@ -1,7 +1,22 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "../components/pagination.css";
+import { FC, Dispatch, SetStateAction, ChangeEvent } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faBackwardFast,
+  faForwardFast,
+} from '@fortawesome/free-solid-svg-icons';
+import '../components/pagination.css';
 
-const PaginationTwo = ({ comicsPage, setComicsPage, comicsMaxPage }) => {
+interface PaginationTwoProps {
+  comicsPage: number;
+  setComicsPage: Dispatch<SetStateAction<number>>;
+  comicsMaxPage: number;
+}
+
+const PaginationTwo: FC<PaginationTwoProps> = ({
+  comicsPage,
+  setComicsPage,
+  comicsMaxPage,
+}) => {
   const pageDown = () => {
     if (comicsPage > 1) {
       setComicsPage(comicsPage - 1);
@@ -30,9 +45,9 @@ const PaginationTwo = ({ comicsPage, setComicsPage, comicsMaxPage }) => {
     }
   };
 
-  const changePage = (value) => {
-    if (value <= comicsMaxPage) {
-      setComicsPage(value);
+  const changePage = (event: ChangeEvent<HTMLInputElement>) => {
+    if (Number(event) <= comicsMaxPage) {
+      setComicsPage(Number(event.target.value));
     } else {
       setComicsPage(comicsMaxPage);
     }
@@ -42,7 +57,7 @@ const PaginationTwo = ({ comicsPage, setComicsPage, comicsMaxPage }) => {
     <div className="page-btn-container">
       <div className="page-btn-all">
         <FontAwesomeIcon
-          icon="fa-solid fa-backward-fast"
+          icon={faBackwardFast}
           className="page-btn"
           onClick={pageDownFast}
         />
@@ -53,10 +68,8 @@ const PaginationTwo = ({ comicsPage, setComicsPage, comicsMaxPage }) => {
         />
         <input
           type="number"
-          placeholder={comicsPage}
-          onChange={(event) => {
-            changePage(event.target.value);
-          }}
+          placeholder={comicsPage.toString()}
+          onChange={changePage}
         />
         / <p>{comicsMaxPage}</p>
         <FontAwesomeIcon
@@ -65,7 +78,7 @@ const PaginationTwo = ({ comicsPage, setComicsPage, comicsMaxPage }) => {
           onClick={pageUp}
         />
         <FontAwesomeIcon
-          icon="fa-solid fa-forward-fast"
+          icon={faForwardFast}
           className="page-btn"
           onClick={pageUpFast}
         />

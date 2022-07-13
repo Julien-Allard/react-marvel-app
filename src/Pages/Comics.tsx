@@ -34,7 +34,7 @@ const Comics: FC<ComicsProps> = ({ search, setSearch }) => {
     null,
   );
   const [comicsPage, setComicsPage] = useState<number>(1);
-  const [comicsMaxPage, setComicsMaxPage] = useState<number | null>(null);
+  const [comicsMaxPage, setComicsMaxPage] = useState<number>(1);
   const [comicsLoading, setComicsLoading] = useState<boolean>(true);
   const [isFavourite, setIsFavourite] = useState<boolean>(false);
 
