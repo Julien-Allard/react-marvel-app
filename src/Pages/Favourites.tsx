@@ -1,19 +1,29 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import DeadpoolFace from "../assets/img/deadpool-portrait.jpeg";
+import { useState, useEffect, FC } from 'react';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHandBackFist } from '@fortawesome/free-solid-svg-icons';
+import DeadpoolFace from '../assets/img/deadpool-portrait.jpeg';
 
-const Favourites = () => {
-  const [isLoading, setIsLoading] = useState(true);
+type Thumbnail = {
+  path: string;
+  extension: string;
+};
 
-  //gestion des favoris
-  const [favCharas, setFavCharas] = useState();
+type ReceivedFavouritesData = {
+  thumbnail: Thumbnail;
+  _id: string;
+  name: string;
+  description: string;
+};
+
+const Favourites: FC = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [favCharas, setFavCharas] = useState<ReceivedFavouritesData[] | []>([]);
 
   useEffect(() => {
     const recoverFavs = () => {
-      const importFavs = localStorage.getItem("favchars");
+      const importFavs = localStorage.getItem('favchars') || '';
       const favContainer = JSON.parse(importFavs);
-      // console.log(favContainer);
       setFavCharas(favContainer);
       setIsLoading(false);
     };
@@ -36,7 +46,7 @@ const Favourites = () => {
               <div className="character-card">
                 {localStorage.getItem(`fav${character._id}`) && (
                   <FontAwesomeIcon
-                    icon="fa-solid fa-hand-back-fist"
+                    icon={faHandBackFist}
                     className="bookmark-icon"
                   />
                 )}
