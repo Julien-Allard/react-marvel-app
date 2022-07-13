@@ -1,8 +1,9 @@
-import "../components/header.css";
-import reactLogo from "../assets/img/react-brands.svg";
-import Navigation from "./Navigation";
+import { FC } from 'react';
+import '../components/header.css';
+import reactLogo from '../assets/img/react-brands.svg';
+import Navigation from './Navigation';
 
-const Header = () => {
+const Header: FC = () => {
   return (
     <>
       <div className="header-container">
