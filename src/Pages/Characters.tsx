@@ -41,7 +41,7 @@ const Characters: FC<CharactersProps> = ({ search, setSearch }) => {
   const [data, setData] = useState<ReceivedDatas | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [page, setPage] = useState<number>(1);
-  const [maxPage, setMaxPage] = useState<number | null>(null);
+  const [maxPage, setMaxPage] = useState<number>(1);
 
   useEffect(() => {
     const fetchData = async () => {

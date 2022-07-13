@@ -1,7 +1,18 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "../components/pagination.css";
+import { FC, Dispatch, SetStateAction, ChangeEvent } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faBackwardFast,
+  faForwardFast,
+} from '@fortawesome/free-solid-svg-icons';
+import '../components/pagination.css';
 
-const Pagination = ({ page, setPage, maxPage }) => {
+interface PaginationProps {
+  page: number;
+  setPage: Dispatch<SetStateAction<number>>;
+  maxPage: number;
+}
+
+const Pagination: FC<PaginationProps> = ({ page, setPage, maxPage }) => {
   const pageDown = () => {
     if (page > 1) {
       setPage(page - 1);
@@ -30,9 +41,9 @@ const Pagination = ({ page, setPage, maxPage }) => {
     }
   };
 
-  const changePage = (value) => {
-    if (value <= maxPage) {
-      setPage(value);
+  const changePage = (event: ChangeEvent<HTMLInputElement>) => {
+    if (Number(event) <= maxPage) {
+      setPage(Number(event));
     } else {
       setPage(maxPage);
     }
@@ -42,7 +53,7 @@ const Pagination = ({ page, setPage, maxPage }) => {
     <div className="page-btn-container">
       <div className="page-btn-all">
         <FontAwesomeIcon
-          icon="fa-solid fa-backward-fast"
+          icon={faBackwardFast}
           className="page-btn"
           onClick={pageDownFast}
         />
@@ -53,10 +64,8 @@ const Pagination = ({ page, setPage, maxPage }) => {
         />
         <input
           type="number"
-          placeholder={page}
-          onChange={(event) => {
-            changePage(event.target.value);
-          }}
+          placeholder={page.toString()}
+          onChange={changePage}
         />
         / <p>{maxPage}</p>
         <FontAwesomeIcon
@@ -65,7 +74,7 @@ const Pagination = ({ page, setPage, maxPage }) => {
           onClick={pageUp}
         />
         <FontAwesomeIcon
-          icon="fa-solid fa-forward-fast"
+          icon={faForwardFast}
           className="page-btn"
           onClick={pageUpFast}
         />
